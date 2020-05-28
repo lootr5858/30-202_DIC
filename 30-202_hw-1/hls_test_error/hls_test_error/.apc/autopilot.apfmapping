@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<autopilotfilemapping:AutoPilotFileMapping xmlns:autopilotfilemapping="www.autoesl.com/autopilotfilemapping">
+  <source>
+    <originFiles name="sha256.c" path="C:\Users\windows-10-vm1\Desktop\github\30-202_DIC\30-202_hw-1\hls_error\sha256.c"/>
+  </source>
+  <testbench>
+    <originFiles name="out.gold.dat" path="C:\Users\windows-10-vm1\Desktop\github\30-202_DIC\30-202_hw-1\hls_error\out.gold.dat"/>
+    <originFiles name="sha256_tb.c" path="C:\Users\windows-10-vm1\Desktop\github\30-202_DIC\30-202_hw-1\hls_error\sha256_tb.c"/>
+  </testbench>
+</autopilotfilemapping:AutoPilotFileMapping>

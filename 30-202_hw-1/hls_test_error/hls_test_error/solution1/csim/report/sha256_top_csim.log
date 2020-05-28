@@ -1,0 +1,22 @@
+INFO: [SIM 2] *************** CSIM start ***************
+WARNING: [SIM 51] HLS only supports CLANG compiler in Linux.
+INFO: [SIM 4] CSIM will launch GCC as the compiler.
+   Compiling(apcc) ../../../../../hls_error/sha256_tb.c in debug mode
+INFO: [HLS 200-10] Running 'c:/Xilinx/Vivado_HLS/2016.4/bin/unwrapped/win64.o/apcc.exe'
+INFO: [HLS 200-10] For user 'windows-10-vm1' on host 'desktop-s13u0u4' (Windows NT_amd64 version 6.2) on Sun May 24 13:44:47 +0800 2020
+INFO: [HLS 200-10] In directory 'C:/Users/windows-10-vm1/Desktop/github/30-202_DIC/30-202_hw-1/hls_test_error/hls_test_error/solution1/csim/build'
+INFO: [APCC 202-3] Tmp directory is apcc_db
+INFO: [APCC 202-1] APCC is done.
+   Compiling(apcc) ../../../../../hls_error/sha256.c in debug mode
+INFO: [HLS 200-10] Running 'c:/Xilinx/Vivado_HLS/2016.4/bin/unwrapped/win64.o/apcc.exe'
+INFO: [HLS 200-10] For user 'windows-10-vm1' on host 'desktop-s13u0u4' (Windows NT_amd64 version 6.2) on Sun May 24 13:44:51 +0800 2020
+INFO: [HLS 200-10] In directory 'C:/Users/windows-10-vm1/Desktop/github/30-202_DIC/30-202_hw-1/hls_test_error/hls_test_error/solution1/csim/build'
+INFO: [APCC 202-3] Tmp directory is apcc_db
+INFO: [APCC 202-1] APCC is done.
+   Generating csim.exe
+Comparing results against golden output
+-----------------------------------------------
+PASS: The output matches with the golden output
+-----------------------------------------------
+INFO: [SIM 1] CSim done with 0 errors.
+INFO: [SIM 3] *************** CSIM finish ***************

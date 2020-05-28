@@ -1,0 +1,303 @@
+
+
+================================================================
+== Vivado HLS Report for 'sha256_top'
+================================================================
+* Date:           Sun May 24 13:45:19 2020
+
+* Version:        2016.4 (Build 1756540 on Mon Jan 23 19:31:01 MST 2017)
+* Project:        hls_test_error
+* Solution:       solution1
+* Product family: zynq
+* Target device:  xc7z020clg484-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing (ns): 
+    * Summary: 
+    +--------+-------+----------+------------+
+    |  Clock | Target| Estimated| Uncertainty|
+    +--------+-------+----------+------------+
+    |ap_clk  |  10.00|      7.12|        1.25|
+    +--------+-------+----------+------------+
+
++ Latency (clock cycles): 
+    * Summary: 
+    +-----+-----+-----+-----+---------+
+    |  Latency  |  Interval | Pipeline|
+    | min | max | min | max |   Type  |
+    +-----+-----+-----+-----+---------+
+    |    ?|    ?|    ?|    ?|   none  |
+    +-----+-----+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +----------+-----+-------+----------+-----------+-----------+------+----------+
+        |          |   Latency   | Iteration|  Initiation Interval  | Trip |          |
+        | Loop Name| min |  max  |  Latency |  achieved |   target  | Count| Pipelined|
+        +----------+-----+-------+----------+-----------+-----------+------+----------+
+        |- Loop 1  |   96|  14048|  3 ~ 439 |          -|          -|    32|    no    |
+        +----------+-----+-------+----------+-----------+-----------+------+----------+
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 1
+ResetActiveHigh: 1
+IsCombinational: 0
+IsDatapathOnly: 0
+HasWiredReturn: 1
+HasMFsm: 0
+HasVarLatency: 1
+IsPipeline: 0
+IsRtlPipelined: 0
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states: 6
+* Pipeline: 0
+* Dataflow Pipeline: 0
+
+* FSM state transitions: 
+1 --> 
+	2  / true
+2 --> 
+	3  / (!exitcond_i)
+	6  / (exitcond_i)
+3 --> 
+	4  / (tmp_1_i)
+	5  / (!tmp_1_i)
+4 --> 
+	5  / true
+5 --> 
+	2  / true
+6 --> 
+* FSM state operations: 
+
+ <State 1>: 1.57ns
+ST_1: StgValue_7 (16)  [1/1] 0.00ns
+:0  call void (...)* @_ssdm_op_SpecBitsMap([32 x i8]* %data) nounwind, !map !36
+
+ST_1: StgValue_8 (17)  [1/1] 0.00ns
+:1  call void (...)* @_ssdm_op_SpecBitsMap([32 x i8]* %hash) nounwind, !map !42
+
+ST_1: StgValue_9 (18)  [1/1] 0.00ns
+:2  call void (...)* @_ssdm_op_SpecTopModule([11 x i8]* @sha256_top_str) nounwind
+
+ST_1: StgValue_10 (19)  [1/1] 1.57ns  loc: ../hls_error/sha256.c:59->../hls_error/sha256.c:145
+:3  store i32 0, i32* @ctx_datalen, align 4
+
+ST_1: StgValue_11 (20)  [1/1] 1.57ns  loc: ../hls_error/sha256.c:60->../hls_error/sha256.c:145
+:4  store i32 0, i32* @ctx_bitlen_0, align 4
+
+ST_1: StgValue_12 (21)  [1/1] 1.57ns  loc: ../hls_error/sha256.c:61->../hls_error/sha256.c:145
+:5  store i32 0, i32* @ctx_bitlen_1, align 4
+
+ST_1: StgValue_13 (22)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:62->../hls_error/sha256.c:145
+:6  store i32 1779033703, i32* @ctx_state_0, align 16
+
+ST_1: StgValue_14 (23)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:63->../hls_error/sha256.c:145
+:7  store i32 -1150833019, i32* @ctx_state_1, align 4
+
+ST_1: StgValue_15 (24)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:64->../hls_error/sha256.c:145
+:8  store i32 1013904242, i32* @ctx_state_2, align 8
+
+ST_1: StgValue_16 (25)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:65->../hls_error/sha256.c:145
+:9  store i32 -1521486534, i32* @ctx_state_3, align 4
+
+ST_1: StgValue_17 (26)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:66->../hls_error/sha256.c:145
+:10  store i32 1359893119, i32* @ctx_state_4, align 16
+
+ST_1: StgValue_18 (27)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:67->../hls_error/sha256.c:145
+:11  store i32 -1694144372, i32* @ctx_state_5, align 4
+
+ST_1: StgValue_19 (28)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:68->../hls_error/sha256.c:145
+:12  store i32 528734635, i32* @ctx_state_6, align 8
+
+ST_1: StgValue_20 (29)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:69->../hls_error/sha256.c:145
+:13  store i32 1541459225, i32* @ctx_state_7, align 4
+
+ST_1: StgValue_21 (30)  [1/1] 1.57ns  loc: ../hls_error/sha256.c:76->../hls_error/sha256.c:150
+:14  br label %1
+
+
+ <State 2>: 2.39ns
+ST_2: i_i (32)  [1/1] 0.00ns
+:0  %i_i = phi i6 [ 0, %0 ], [ %i, %._crit_edge.i ]
+
+ST_2: i_i_cast1 (33)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:76->../hls_error/sha256.c:150
+:1  %i_i_cast1 = zext i6 %i_i to i32
+
+ST_2: exitcond_i (34)  [1/1] 1.94ns  loc: ../hls_error/sha256.c:76->../hls_error/sha256.c:150
+:2  %exitcond_i = icmp eq i6 %i_i, -32
+
+ST_2: empty (35)  [1/1] 0.00ns
+:3  %empty = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 32, i64 32, i64 32) nounwind
+
+ST_2: i (36)  [1/1] 1.72ns  loc: ../hls_error/sha256.c:76->../hls_error/sha256.c:150
+:4  %i = add i6 %i_i, 1
+
+ST_2: StgValue_27 (37)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:76->../hls_error/sha256.c:150
+:5  br i1 %exitcond_i, label %sha256_update.exit, label %2
+
+ST_2: data_addr (39)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:77->../hls_error/sha256.c:150
+:0  %data_addr = getelementptr [32 x i8]* %data, i32 0, i32 %i_i_cast1
+
+ST_2: data_load (40)  [2/2] 2.39ns  loc: ../hls_error/sha256.c:77->../hls_error/sha256.c:150
+:1  %data_load = load i8* %data_addr, align 1
+
+ST_2: StgValue_30 (66)  [2/2] 0.00ns  loc: ../hls_error/sha256.c:153
+sha256_update.exit:0  call fastcc void @sha256_final([32 x i8]* %hash) nounwind
+
+
+ <State 3>: 4.96ns
+ST_3: data_load (40)  [1/2] 2.39ns  loc: ../hls_error/sha256.c:77->../hls_error/sha256.c:150
+:1  %data_load = load i8* %data_addr, align 1
+
+ST_3: ctx_datalen_load (41)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:77->../hls_error/sha256.c:150
+:2  %ctx_datalen_load = load i32* @ctx_datalen, align 4
+
+ST_3: ctx_in_data_addr (42)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:77->../hls_error/sha256.c:150
+:3  %ctx_in_data_addr = getelementptr [64 x i8]* @ctx_in_data, i32 0, i32 %ctx_datalen_load
+
+ST_3: StgValue_34 (43)  [1/1] 2.39ns  loc: ../hls_error/sha256.c:77->../hls_error/sha256.c:150
+:4  store i8 %data_load, i8* %ctx_in_data_addr, align 1
+
+ST_3: ctx_datalen_assign_i (44)  [1/1] 2.44ns  loc: ../hls_error/sha256.c:78->../hls_error/sha256.c:150
+:5  %ctx_datalen_assign_i = add i32 %ctx_datalen_load, 1
+
+ST_3: StgValue_36 (45)  [1/1] 1.57ns  loc: ../hls_error/sha256.c:78->../hls_error/sha256.c:150
+:6  store i32 %ctx_datalen_assign_i, i32* @ctx_datalen, align 4
+
+ST_3: tmp_1_i (46)  [1/1] 2.52ns  loc: ../hls_error/sha256.c:79->../hls_error/sha256.c:150
+:7  %tmp_1_i = icmp eq i32 %ctx_datalen_assign_i, 64
+
+ST_3: StgValue_38 (47)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:79->../hls_error/sha256.c:150
+:8  br i1 %tmp_1_i, label %3, label %._crit_edge.i
+
+
+ <State 4>: 0.00ns
+ST_4: StgValue_39 (49)  [2/2] 0.00ns  loc: ../hls_error/sha256.c:80->../hls_error/sha256.c:150
+:0  call fastcc void @sha256_transform([64 x i8]* @ctx_in_data) nounwind
+
+
+ <State 5>: 4.01ns
+ST_5: StgValue_40 (49)  [1/2] 0.00ns  loc: ../hls_error/sha256.c:80->../hls_error/sha256.c:150
+:0  call fastcc void @sha256_transform([64 x i8]* @ctx_in_data) nounwind
+
+ST_5: ctx_bitlen_0_load (50)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:81->../hls_error/sha256.c:150
+:1  %ctx_bitlen_0_load = load i32* @ctx_bitlen_0, align 4
+
+ST_5: tmp_2_i (51)  [1/1] 2.52ns  loc: ../hls_error/sha256.c:81->../hls_error/sha256.c:150
+:2  %tmp_2_i = icmp ugt i32 %ctx_bitlen_0_load, -513
+
+ST_5: StgValue_43 (52)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:81->../hls_error/sha256.c:150
+:3  br i1 %tmp_2_i, label %4, label %._crit_edge1.i
+
+ST_5: ctx_bitlen_1_load (54)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:81->../hls_error/sha256.c:150
+:0  %ctx_bitlen_1_load = load i32* @ctx_bitlen_1, align 4
+
+ST_5: tmp_3_i (55)  [1/1] 2.44ns  loc: ../hls_error/sha256.c:81->../hls_error/sha256.c:150
+:1  %tmp_3_i = add i32 %ctx_bitlen_1_load, 1
+
+ST_5: StgValue_46 (56)  [1/1] 1.57ns  loc: ../hls_error/sha256.c:81->../hls_error/sha256.c:150
+:2  store i32 %tmp_3_i, i32* @ctx_bitlen_1, align 4
+
+ST_5: StgValue_47 (57)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:81->../hls_error/sha256.c:150
+:3  br label %._crit_edge1.i
+
+ST_5: tmp_4_i (59)  [1/1] 2.44ns  loc: ../hls_error/sha256.c:81->../hls_error/sha256.c:150
+._crit_edge1.i:0  %tmp_4_i = add i32 %ctx_bitlen_0_load, 512
+
+ST_5: StgValue_49 (60)  [1/1] 1.57ns  loc: ../hls_error/sha256.c:81->../hls_error/sha256.c:150
+._crit_edge1.i:1  store i32 %tmp_4_i, i32* @ctx_bitlen_0, align 4
+
+ST_5: StgValue_50 (61)  [1/1] 1.57ns  loc: ../hls_error/sha256.c:82->../hls_error/sha256.c:150
+._crit_edge1.i:2  store i32 0, i32* @ctx_datalen, align 4
+
+ST_5: StgValue_51 (62)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:83->../hls_error/sha256.c:150
+._crit_edge1.i:3  br label %._crit_edge.i
+
+ST_5: StgValue_52 (64)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:76->../hls_error/sha256.c:150
+._crit_edge.i:0  br label %1
+
+
+ <State 6>: 0.00ns
+ST_6: StgValue_53 (66)  [1/2] 0.00ns  loc: ../hls_error/sha256.c:153
+sha256_update.exit:0  call fastcc void @sha256_final([32 x i8]* %hash) nounwind
+
+ST_6: StgValue_54 (67)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:154
+sha256_update.exit:1  ret void
+
+
+
+============================================================
++ Verbose Summary: Timing violations
+============================================================
+Target clock period: 10ns, clock uncertainty: 1.25ns.
+
+ <State 1>: 1.57ns
+The critical path consists of the following:
+	'store' operation (../hls_error/sha256.c:59->../hls_error/sha256.c:145) of constant 0 on static variable 'ctx_datalen' [19]  (1.57 ns)
+
+ <State 2>: 2.39ns
+The critical path consists of the following:
+	'phi' operation ('i') with incoming values : ('i', ../hls_error/sha256.c:76->../hls_error/sha256.c:150) [32]  (0 ns)
+	'getelementptr' operation ('data_addr', ../hls_error/sha256.c:77->../hls_error/sha256.c:150) [39]  (0 ns)
+	'load' operation ('data_load', ../hls_error/sha256.c:77->../hls_error/sha256.c:150) on array 'data' [40]  (2.39 ns)
+
+ <State 3>: 4.96ns
+The critical path consists of the following:
+	'load' operation ('ctx_datalen_load', ../hls_error/sha256.c:77->../hls_error/sha256.c:150) on static variable 'ctx_datalen' [41]  (0 ns)
+	'add' operation ('ctx_datalen_assign_i', ../hls_error/sha256.c:78->../hls_error/sha256.c:150) [44]  (2.44 ns)
+	'icmp' operation ('tmp_1_i', ../hls_error/sha256.c:79->../hls_error/sha256.c:150) [46]  (2.52 ns)
+
+ <State 4>: 0ns
+The critical path consists of the following:
+
+ <State 5>: 4.01ns
+The critical path consists of the following:
+	'load' operation ('ctx_bitlen_0_load', ../hls_error/sha256.c:81->../hls_error/sha256.c:150) on static variable 'ctx_bitlen_0' [50]  (0 ns)
+	'add' operation ('tmp_4_i', ../hls_error/sha256.c:81->../hls_error/sha256.c:150) [59]  (2.44 ns)
+	'store' operation (../hls_error/sha256.c:81->../hls_error/sha256.c:150) of variable 'tmp_4_i', ../hls_error/sha256.c:81->../hls_error/sha256.c:150 on static variable 'ctx_bitlen_0' [60]  (1.57 ns)
+
+ <State 6>: 0ns
+The critical path consists of the following:
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+N/A
+* FSMD analyzer results:
+  - Output states:
+ - Input state : 
+  - Chain level:
+	State 1
+	State 2
+	State 3
+	State 4
+	State 5
+	State 6
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+N/A

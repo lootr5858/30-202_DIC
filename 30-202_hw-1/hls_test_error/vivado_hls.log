@@ -1,0 +1,104 @@
+INFO: [HLS 200-10] Running 'C:/Xilinx/Vivado_HLS/2016.4/bin/unwrapped/win64.o/vivado_hls.exe'
+INFO: [HLS 200-10] For user 'windows-10-vm1' on host 'desktop-s13u0u4' (Windows NT_amd64 version 6.2) on Sun May 24 13:45:12 +0800 2020
+INFO: [HLS 200-10] In directory 'C:/Users/windows-10-vm1/Desktop/github/30-202_DIC/30-202_hw-1/hls_test_error'
+INFO: [HLS 200-10] Opening project 'C:/Users/windows-10-vm1/Desktop/github/30-202_DIC/30-202_hw-1/hls_test_error/hls_test_error'.
+INFO: [HLS 200-10] Adding design file '../hls_error/sha256.c' to the project
+INFO: [HLS 200-10] Adding test bench file '../hls_error/out.gold.dat' to the project
+INFO: [HLS 200-10] Adding test bench file '../hls_error/sha256_tb.c' to the project
+INFO: [HLS 200-10] Opening solution 'C:/Users/windows-10-vm1/Desktop/github/30-202_DIC/30-202_hw-1/hls_test_error/hls_test_error/solution1'.
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020clg484-1'
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] Analyzing design file '../hls_error/sha256.c' ... 
+INFO: [HLS 200-10] Validating synthesis directives ...
+INFO: [HLS 200-111] Finished Checking Pragmas Time (s): cpu = 00:00:01 ; elapsed = 00:00:05 . Memory (MB): peak = 92.699 ; gain = 43.090
+INFO: [HLS 200-111] Finished Linking Time (s): cpu = 00:00:01 ; elapsed = 00:00:05 . Memory (MB): peak = 92.723 ; gain = 43.113
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms Time (s): cpu = 00:00:01 ; elapsed = 00:00:06 . Memory (MB): peak = 94.516 ; gain = 44.906
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [XFORM 203-602] Inlining function 'sha256_init' into 'sha256_top' (../hls_error/sha256.c:145) automatically.
+INFO: [HLS 200-111] Finished Checking Synthesizability Time (s): cpu = 00:00:01 ; elapsed = 00:00:06 . Memory (MB): peak = 94.988 ; gain = 45.379
+INFO: [XFORM 203-102] Partitioning array 'ctx.state' automatically.
+INFO: [XFORM 203-102] Partitioning array 'ctx.bitlen' automatically.
+INFO: [XFORM 203-602] Inlining function 'sha256_init' into 'sha256_top' (../hls_error/sha256.c:145) automatically.
+INFO: [XFORM 203-602] Inlining function 'sha256_update' into 'sha256_top' (../hls_error/sha256.c:150) automatically.
+INFO: [XFORM 203-11] Balancing expressions in function 'sha256_transform' (../hls_error/sha256.c:16)...10 expression(s) balanced.
+INFO: [HLS 200-111] Finished Pre-synthesis Time (s): cpu = 00:00:01 ; elapsed = 00:00:06 . Memory (MB): peak = 116.508 ; gain = 66.898
+INFO: [HLS 200-111] Finished Architecture Synthesis Time (s): cpu = 00:00:01 ; elapsed = 00:00:06 . Memory (MB): peak = 128.793 ; gain = 79.184
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'sha256_top' ...
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Implementing module 'sha256_transform' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 6.657 seconds; current allocated memory: 96.634 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.134 seconds; current allocated memory: 96.602 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Implementing module 'sha256_final' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.32 seconds; current allocated memory: 98.085 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.125 seconds; current allocated memory: 98.053 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Implementing module 'sha256_top' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.235 seconds; current allocated memory: 98.029 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.281 seconds; current allocated memory: 97.978 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'sha256_transform' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'sha256_transform'.
+INFO: [HLS 200-111]  Elapsed time: 0.344 seconds; current allocated memory: 98.214 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'sha256_final' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'sha256_final'.
+INFO: [HLS 200-111]  Elapsed time: 0.937 seconds; current allocated memory: 99.347 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'sha256_top' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-500] Setting interface mode on port 'sha256_top/data' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'sha256_top/hash' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on function 'sha256_top' to 'ap_ctrl_hs'.
+WARNING: [RTGEN 206-101] Register 'ctx_datalen' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ctx_bitlen_0' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ctx_bitlen_1' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ctx_state_0' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ctx_state_1' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ctx_state_2' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ctx_state_3' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ctx_state_4' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ctx_state_5' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ctx_state_6' is power-on initialization.
+WARNING: [RTGEN 206-101] Register 'ctx_state_7' is power-on initialization.
+INFO: [SYN 201-210] Renamed object name 'sha256_top_ctx_in_data' to 'sha256_top_ctx_inbkb' due to the length limit 20
+WARNING: [RTGEN 206-101] Global array 'k' will not be exposed as RTL port.
+INFO: [RTGEN 206-100] Finished creating RTL model for 'sha256_top'.
+INFO: [HLS 200-111]  Elapsed time: 0.875 seconds; current allocated memory: 100.617 MB.
+INFO: [RTMG 210-279] Implementing memory 'sha256_transform_k_rom' using auto ROMs.
+INFO: [RTMG 210-278] Implementing memory 'sha256_transform_m_ram' using block RAMs.
+INFO: [RTMG 210-278] Implementing memory 'sha256_top_ctx_inbkb_ram' using block RAMs with power-on initialization.
+INFO: [HLS 200-111] Finished generating all RTL models Time (s): cpu = 00:00:04 ; elapsed = 00:00:11 . Memory (MB): peak = 144.133 ; gain = 94.523
+INFO: [SYSC 207-301] Generating SystemC RTL for sha256_top.
+INFO: [VHDL 208-304] Generating VHDL RTL for sha256_top.
+INFO: [VLOG 209-307] Generating Verilog RTL for sha256_top.
+INFO: [HLS 200-112] Total elapsed time: 11.066 seconds; peak allocated memory: 100.617 MB.

@@ -1,0 +1,690 @@
+
+
+================================================================
+== Vivado HLS Report for 'sha256_final'
+================================================================
+* Date:           Sun May 24 13:45:19 2020
+
+* Version:        2016.4 (Build 1756540 on Mon Jan 23 19:31:01 MST 2017)
+* Project:        hls_test_error
+* Solution:       solution1
+* Product family: zynq
+* Target device:  xc7z020clg484-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing (ns): 
+    * Summary: 
+    +--------+-------+----------+------------+
+    |  Clock | Target| Estimated| Uncertainty|
+    +--------+-------+----------+------------+
+    |ap_clk  |  10.00|      7.12|        1.25|
+    +--------+-------+----------+------------+
+
++ Latency (clock cycles): 
+    * Summary: 
+    +-----+-----+-----+-----+---------+
+    |  Latency  |  Interval | Pipeline|
+    | min | max | min | max |   Type  |
+    +-----+-----+-----+-----+---------+
+    |    ?|    ?|    ?|    ?|   none  |
+    +-----+-----+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +---------------------------+-----+-----+----------+-----------+-----------+------+----------+
+        |                           |  Latency  | Iteration|  Initiation Interval  | Trip |          |
+        |         Loop Name         | min | max |  Latency |  achieved |   target  | Count| Pipelined|
+        +---------------------------+-----+-----+----------+-----------+-----------+------+----------+
+        |- Loop 1                   |    ?|    ?|         1|          -|          -|     ?|    no    |
+        |- Loop 2                   |    ?|    ?|         1|          -|          -|     ?|    no    |
+        |- sha256_final_memset      |   56|   56|         1|          -|          -|    56|    no    |
+        |- sha256_final_final_loop  |   16|   16|         4|          -|          -|     4|    no    |
+        +---------------------------+-----+-----+----------+-----------+-----------+------+----------+
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 0
+ResetActiveHigh: 1
+IsCombinational: 0
+IsDatapathOnly: 0
+HasWiredReturn: 1
+HasMFsm: 0
+HasVarLatency: 1
+IsPipeline: 0
+IsRtlPipelined: 0
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states: 14
+* Pipeline: 0
+* Dataflow Pipeline: 0
+
+* FSM state transitions: 
+1 --> 
+	2  / (!tmp)
+	5  / (tmp)
+2 --> 
+	3  / (!icmp)
+	2  / (icmp)
+3 --> 
+	4  / true
+4 --> 
+	4  / (!tmp & !tmp_s)
+	6  / (tmp) | (tmp_s)
+5 --> 
+	5  / (!exitcond)
+	4  / (exitcond)
+6 --> 
+	7  / true
+7 --> 
+	8  / true
+8 --> 
+	9  / true
+9 --> 
+	10  / true
+10 --> 
+	11  / true
+11 --> 
+	12  / (!tmp_78)
+12 --> 
+	13  / true
+13 --> 
+	14  / true
+14 --> 
+	11  / true
+* FSM state operations: 
+
+ <State 1>: 2.52ns
+ST_1: i (15)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:91
+:0  %i = load i32* @ctx_datalen, align 4
+
+ST_1: tmp (16)  [1/1] 2.52ns  loc: ../hls_error/sha256.c:94
+:1  %tmp = icmp ult i32 %i, 56
+
+ST_1: ctx_in_data_addr (17)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:95
+:2  %ctx_in_data_addr = getelementptr [64 x i8]* @ctx_in_data, i32 0, i32 %i
+
+ST_1: StgValue_18 (18)  [1/1] 2.39ns  loc: ../hls_error/sha256.c:95
+:3  store i8 -128, i8* %ctx_in_data_addr, align 1
+
+ST_1: StgValue_19 (19)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:94
+:4  br i1 %tmp, label %.preheader18.preheader, label %.preheader.preheader
+
+ST_1: StgValue_20 (21)  [1/1] 1.57ns  loc: ../hls_error/sha256.c:100
+.preheader.preheader:0  br label %.preheader
+
+ST_1: StgValue_21 (50)  [1/1] 1.57ns  loc: ../hls_error/sha256.c:95
+.preheader18.preheader:0  br label %.preheader18
+
+
+ <State 2>: 4.87ns
+ST_2: i_1_in (23)  [1/1] 0.00ns
+.preheader:0  %i_1_in = phi i32 [ %i_1, %2 ], [ %i, %.preheader.preheader ]
+
+ST_2: i_1 (24)  [1/1] 2.44ns  loc: ../hls_error/sha256.c:100
+.preheader:1  %i_1 = add i32 %i_1_in, 1
+
+ST_2: tmp_75 (25)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:101
+.preheader:2  %tmp_75 = call i26 @_ssdm_op_PartSelect.i26.i32.i32.i32(i32 %i_1, i32 6, i32 31)
+
+ST_2: icmp (26)  [1/1] 2.43ns  loc: ../hls_error/sha256.c:101
+.preheader:3  %icmp = icmp eq i26 %tmp_75, 0
+
+ST_2: StgValue_26 (27)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:101
+.preheader:4  br i1 %icmp, label %2, label %3
+
+ST_2: ctx_in_data_addr_2 (29)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:102
+:0  %ctx_in_data_addr_2 = getelementptr [64 x i8]* @ctx_in_data, i32 0, i32 %i_1
+
+ST_2: StgValue_28 (30)  [1/1] 2.39ns  loc: ../hls_error/sha256.c:102
+:1  store i8 0, i8* %ctx_in_data_addr_2, align 1
+
+ST_2: StgValue_29 (31)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:102
+:2  br label %.preheader
+
+ST_2: StgValue_30 (33)  [2/2] 1.57ns  loc: ../hls_error/sha256.c:103
+:0  call fastcc void @sha256_transform([64 x i8]* @ctx_in_data)
+
+
+ <State 3>: 1.57ns
+ST_3: StgValue_31 (33)  [1/2] 0.00ns  loc: ../hls_error/sha256.c:103
+:0  call fastcc void @sha256_transform([64 x i8]* @ctx_in_data)
+
+ST_3: StgValue_32 (34)  [1/1] 1.57ns  loc: ../hls_error/sha256.c:107
+:1  br label %4
+
+
+ <State 4>: 4.35ns
+ST_4: j (36)  [1/1] 0.00ns
+:0  %j = phi i6 [ 0, %3 ], [ %j_2, %5 ]
+
+ST_4: j_cast5 (37)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:107
+:1  %j_cast5 = zext i6 %j to i32
+
+ST_4: tmp_s (38)  [1/1] 1.94ns  loc: ../hls_error/sha256.c:107
+:2  %tmp_s = icmp eq i6 %j, -8
+
+ST_4: empty (39)  [1/1] 0.00ns
+:3  %empty = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 56, i64 56, i64 56)
+
+ST_4: j_2 (40)  [1/1] 1.72ns  loc: ../hls_error/sha256.c:107
+:4  %j_2 = add i6 %j, 1
+
+ST_4: StgValue_38 (41)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:107
+:5  br i1 %tmp_s, label %.loopexit.loopexit, label %5
+
+ST_4: StgValue_39 (43)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:107
+:0  call void (...)* @_ssdm_op_SpecLoopName([20 x i8]* @p_str1) nounwind
+
+ST_4: ctx_in_data_addr_3 (44)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:108
+:1  %ctx_in_data_addr_3 = getelementptr [64 x i8]* @ctx_in_data, i32 0, i32 %j_cast5
+
+ST_4: StgValue_41 (45)  [1/1] 2.39ns  loc: ../hls_error/sha256.c:108
+:2  store i8 0, i8* %ctx_in_data_addr_3, align 1
+
+ST_4: StgValue_42 (46)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:107
+:3  br label %4
+
+ST_4: StgValue_43 (48)  [1/1] 0.00ns
+.loopexit.loopexit:0  br label %.loopexit
+
+ST_4: ctx_bitlen_0_load (63)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:113
+.loopexit:0  %ctx_bitlen_0_load = load i32* @ctx_bitlen_0, align 4
+
+ST_4: tmp_83 (64)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:91
+.loopexit:1  %tmp_83 = trunc i32 %i to i6
+
+ST_4: tmp_85 (65)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:91
+.loopexit:2  %tmp_85 = trunc i32 %i to i5
+
+ST_4: tmp_65 (66)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:113
+.loopexit:3  %tmp_65 = call i9 @_ssdm_op_BitConcatenate.i9.i6.i3(i6 %tmp_83, i3 0)
+
+ST_4: tmp_82_cast (67)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:113
+.loopexit:4  %tmp_82_cast = zext i9 %tmp_65 to i32
+
+ST_4: tmp_66 (68)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:113 (grouped into LUT with out node tmp_67)
+.loopexit:5  %tmp_66 = xor i32 %tmp_82_cast, -1
+
+ST_4: tmp_67 (69)  [1/1] 2.52ns  loc: ../hls_error/sha256.c:113 (out node of the LUT)
+.loopexit:6  %tmp_67 = icmp ugt i32 %ctx_bitlen_0_load, %tmp_66
+
+ST_4: ctx_bitlen_1_load (70)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:113
+.loopexit:7  %ctx_bitlen_1_load = load i32* @ctx_bitlen_1, align 4
+
+ST_4: StgValue_52 (71)  [1/1] 1.57ns  loc: ../hls_error/sha256.c:113
+.loopexit:8  br i1 %tmp_67, label %6, label %.loopexit._crit_edge
+
+ST_4: tmp_68 (73)  [1/1] 2.44ns  loc: ../hls_error/sha256.c:113
+:0  %tmp_68 = add i32 %ctx_bitlen_1_load, 1
+
+ST_4: StgValue_54 (74)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:113
+:1  store i32 %tmp_68, i32* @ctx_bitlen_1, align 4
+
+ST_4: StgValue_55 (75)  [1/1] 1.57ns  loc: ../hls_error/sha256.c:113
+:2  br label %.loopexit._crit_edge
+
+ST_4: tmp_12 (78)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:91
+.loopexit._crit_edge:1  %tmp_12 = call i8 @_ssdm_op_BitConcatenate.i8.i5.i3(i5 %tmp_85, i3 0)
+
+ST_4: tmp_87 (79)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:113
+.loopexit._crit_edge:2  %tmp_87 = trunc i32 %ctx_bitlen_0_load to i8
+
+ST_4: tmp_89 (80)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:113
+.loopexit._crit_edge:3  %tmp_89 = trunc i32 %ctx_bitlen_0_load to i16
+
+ST_4: tmp_15 (81)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:113
+.loopexit._crit_edge:4  %tmp_15 = zext i9 %tmp_65 to i16
+
+ST_4: tmp_91 (82)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:113
+.loopexit._crit_edge:5  %tmp_91 = trunc i32 %ctx_bitlen_0_load to i24
+
+ST_4: tmp_17 (83)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:113
+.loopexit._crit_edge:6  %tmp_17 = zext i9 %tmp_65 to i24
+
+ST_4: tmp_69 (84)  [1/1] 2.44ns  loc: ../hls_error/sha256.c:113
+.loopexit._crit_edge:7  %tmp_69 = add i32 %tmp_82_cast, %ctx_bitlen_0_load
+
+ST_4: tmp_86_cast3 (85)  [1/1] 2.20ns  loc: ../hls_error/sha256.c:113
+.loopexit._crit_edge:8  %tmp_86_cast3 = add i24 %tmp_91, %tmp_17
+
+ST_4: tmp_86_cast (86)  [1/1] 1.96ns  loc: ../hls_error/sha256.c:113
+.loopexit._crit_edge:9  %tmp_86_cast = add i16 %tmp_89, %tmp_15
+
+ST_4: StgValue_65 (87)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:113
+.loopexit._crit_edge:10  store i32 %tmp_69, i32* @ctx_bitlen_0, align 4
+
+ST_4: tmp_70 (88)  [1/1] 1.72ns  loc: ../hls_error/sha256.c:114
+.loopexit._crit_edge:11  %tmp_70 = add i8 %tmp_87, %tmp_12
+
+ST_4: StgValue_67 (89)  [1/1] 2.39ns  loc: ../hls_error/sha256.c:114
+.loopexit._crit_edge:12  store i8 %tmp_70, i8* getelementptr inbounds ([64 x i8]* @ctx_in_data, i32 0, i32 63), align 1
+
+ST_4: tmp_71 (90)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:115
+.loopexit._crit_edge:13  %tmp_71 = call i8 @_ssdm_op_PartSelect.i8.i16.i32.i32(i16 %tmp_86_cast, i32 8, i32 15)
+
+ST_4: StgValue_69 (91)  [1/1] 2.39ns  loc: ../hls_error/sha256.c:115
+.loopexit._crit_edge:14  store i8 %tmp_71, i8* getelementptr inbounds ([64 x i8]* @ctx_in_data, i32 0, i32 62), align 2
+
+ST_4: tmp_72 (92)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:116
+.loopexit._crit_edge:15  %tmp_72 = call i8 @_ssdm_op_PartSelect.i8.i24.i32.i32(i24 %tmp_86_cast3, i32 16, i32 23)
+
+ST_4: tmp_73 (94)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:117
+.loopexit._crit_edge:17  %tmp_73 = call i8 @_ssdm_op_PartSelect.i8.i32.i32.i32(i32 %tmp_69, i32 24, i32 31)
+
+
+ <State 5>: 4.83ns
+ST_5: i_0_in (52)  [1/1] 0.00ns
+.preheader18:0  %i_0_in = phi i32 [ %i_5, %1 ], [ %i, %.preheader18.preheader ]
+
+ST_5: i_5 (53)  [1/1] 2.44ns  loc: ../hls_error/sha256.c:95
+.preheader18:1  %i_5 = add i32 %i_0_in, 1
+
+ST_5: exitcond (54)  [1/1] 2.52ns  loc: ../hls_error/sha256.c:96
+.preheader18:2  %exitcond = icmp eq i32 %i_0_in, 55
+
+ST_5: StgValue_75 (55)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:96
+.preheader18:3  br i1 %exitcond, label %.loopexit.loopexit11, label %1
+
+ST_5: ctx_in_data_addr_1 (57)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:97
+:0  %ctx_in_data_addr_1 = getelementptr [64 x i8]* @ctx_in_data, i32 0, i32 %i_5
+
+ST_5: StgValue_77 (58)  [1/1] 2.39ns  loc: ../hls_error/sha256.c:97
+:1  store i8 0, i8* %ctx_in_data_addr_1, align 1
+
+ST_5: StgValue_78 (59)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:97
+:2  br label %.preheader18
+
+ST_5: StgValue_79 (61)  [1/1] 0.00ns
+.loopexit.loopexit11:0  br label %.loopexit
+
+
+ <State 6>: 2.39ns
+ST_6: ctx_bitlen_1_loc (77)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:113
+.loopexit._crit_edge:0  %ctx_bitlen_1_loc = phi i32 [ %tmp_68, %6 ], [ %ctx_bitlen_1_load, %.loopexit ]
+
+ST_6: StgValue_81 (93)  [1/1] 2.39ns  loc: ../hls_error/sha256.c:116
+.loopexit._crit_edge:16  store i8 %tmp_72, i8* getelementptr inbounds ([64 x i8]* @ctx_in_data, i32 0, i32 61), align 1
+
+ST_6: StgValue_82 (95)  [1/1] 2.39ns  loc: ../hls_error/sha256.c:117
+.loopexit._crit_edge:18  store i8 %tmp_73, i8* getelementptr inbounds ([64 x i8]* @ctx_in_data, i32 0, i32 60), align 4
+
+ST_6: tmp_93 (96)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:118
+.loopexit._crit_edge:19  %tmp_93 = trunc i32 %ctx_bitlen_1_loc to i8
+
+ST_6: tmp_74 (98)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:119
+.loopexit._crit_edge:21  %tmp_74 = call i8 @_ssdm_op_PartSelect.i8.i32.i32.i32(i32 %ctx_bitlen_1_loc, i32 8, i32 15)
+
+ST_6: tmp_76 (100)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:120
+.loopexit._crit_edge:23  %tmp_76 = call i8 @_ssdm_op_PartSelect.i8.i32.i32.i32(i32 %ctx_bitlen_1_loc, i32 16, i32 23)
+
+ST_6: tmp_77 (102)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:121
+.loopexit._crit_edge:25  %tmp_77 = call i8 @_ssdm_op_PartSelect.i8.i32.i32.i32(i32 %ctx_bitlen_1_loc, i32 24, i32 31)
+
+
+ <State 7>: 2.39ns
+ST_7: StgValue_87 (97)  [1/1] 2.39ns  loc: ../hls_error/sha256.c:118
+.loopexit._crit_edge:20  store i8 %tmp_93, i8* getelementptr inbounds ([64 x i8]* @ctx_in_data, i32 0, i32 59), align 1
+
+ST_7: StgValue_88 (99)  [1/1] 2.39ns  loc: ../hls_error/sha256.c:119
+.loopexit._crit_edge:22  store i8 %tmp_74, i8* getelementptr inbounds ([64 x i8]* @ctx_in_data, i32 0, i32 58), align 2
+
+
+ <State 8>: 2.39ns
+ST_8: StgValue_89 (101)  [1/1] 2.39ns  loc: ../hls_error/sha256.c:120
+.loopexit._crit_edge:24  store i8 %tmp_76, i8* getelementptr inbounds ([64 x i8]* @ctx_in_data, i32 0, i32 57), align 1
+
+ST_8: StgValue_90 (103)  [1/1] 2.39ns  loc: ../hls_error/sha256.c:121
+.loopexit._crit_edge:26  store i8 %tmp_77, i8* getelementptr inbounds ([64 x i8]* @ctx_in_data, i32 0, i32 56), align 8
+
+
+ <State 9>: 1.57ns
+ST_9: StgValue_91 (104)  [2/2] 1.57ns  loc: ../hls_error/sha256.c:122
+.loopexit._crit_edge:27  call fastcc void @sha256_transform([64 x i8]* @ctx_in_data)
+
+
+ <State 10>: 1.57ns
+ST_10: StgValue_92 (104)  [1/2] 0.00ns  loc: ../hls_error/sha256.c:122
+.loopexit._crit_edge:27  call fastcc void @sha256_transform([64 x i8]* @ctx_in_data)
+
+ST_10: StgValue_93 (105)  [1/1] 1.57ns  loc: ../hls_error/sha256.c:127
+.loopexit._crit_edge:28  br label %7
+
+
+ <State 11>: 6.91ns
+ST_11: i_2 (107)  [1/1] 0.00ns
+:0  %i_2 = phi i3 [ 0, %.loopexit._crit_edge ], [ %i_6, %8 ]
+
+ST_11: i_2_cast2 (108)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:127
+:1  %i_2_cast2 = zext i3 %i_2 to i32
+
+ST_11: i_2_cast1 (109)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:127
+:2  %i_2_cast1 = zext i3 %i_2 to i5
+
+ST_11: tmp_78 (110)  [1/1] 1.62ns  loc: ../hls_error/sha256.c:127
+:3  %tmp_78 = icmp eq i3 %i_2, -4
+
+ST_11: empty_11 (111)  [1/1] 0.00ns
+:4  %empty_11 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 4, i64 4, i64 4)
+
+ST_11: i_6 (112)  [1/1] 0.80ns  loc: ../hls_error/sha256.c:127
+:5  %i_6 = add i3 %i_2, 1
+
+ST_11: StgValue_100 (113)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:127
+:6  br i1 %tmp_78, label %9, label %8
+
+ST_11: tmp_95 (117)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:127
+:2  %tmp_95 = trunc i3 %i_2 to i2
+
+ST_11: tmp_79 (118)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:128
+:3  %tmp_79 = call i5 @_ssdm_op_BitConcatenate.i5.i2.i3(i2 %tmp_95, i3 0)
+
+ST_11: tmp_80 (119)  [1/1] 1.72ns  loc: ../hls_error/sha256.c:128
+:4  %tmp_80 = sub i5 -8, %tmp_79
+
+ST_11: tmp_103_cast (120)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:128
+:5  %tmp_103_cast = zext i5 %tmp_80 to i32
+
+ST_11: ctx_state_1_load (125)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:129
+:10  %ctx_state_1_load = load i32* @ctx_state_1, align 4
+
+ST_11: tmp_82 (126)  [1/1] 2.80ns  loc: ../hls_error/sha256.c:129
+:11  %tmp_82 = lshr i32 %ctx_state_1_load, %tmp_103_cast
+
+ST_11: tmp_98 (127)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:129
+:12  %tmp_98 = trunc i32 %tmp_82 to i8
+
+ST_11: sum2 (128)  [1/1] 1.37ns  loc: ../hls_error/sha256.c:127
+:13  %sum2 = xor i3 %i_2, -4
+
+ST_11: sum2_cast (129)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:127
+:14  %sum2_cast = zext i3 %sum2 to i32
+
+ST_11: final_hash_addr_1 (130)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:129
+:15  %final_hash_addr_1 = getelementptr [32 x i8]* %final_hash, i32 0, i32 %sum2_cast
+
+ST_11: StgValue_111 (131)  [1/1] 2.39ns  loc: ../hls_error/sha256.c:129
+:16  store i8 %tmp_98, i8* %final_hash_addr_1, align 1
+
+ST_11: ctx_state_2_load (132)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:130
+:17  %ctx_state_2_load = load i32* @ctx_state_2, align 8
+
+ST_11: tmp_84 (133)  [1/1] 2.80ns  loc: ../hls_error/sha256.c:130
+:18  %tmp_84 = lshr i32 %ctx_state_2_load, %tmp_103_cast
+
+ST_11: tmp_99 (134)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:130
+:19  %tmp_99 = trunc i32 %tmp_84 to i8
+
+ST_11: sum1 (135)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:127
+:20  %sum1 = call i4 @_ssdm_op_BitConcatenate.i4.i1.i3(i1 true, i3 %i_2)
+
+ST_11: sum4_cast (136)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:127
+:21  %sum4_cast = zext i4 %sum1 to i32
+
+ST_11: final_hash_addr_2 (137)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:130
+:22  %final_hash_addr_2 = getelementptr [32 x i8]* %final_hash, i32 0, i32 %sum4_cast
+
+ST_11: StgValue_118 (138)  [1/1] 2.39ns  loc: ../hls_error/sha256.c:130
+:23  store i8 %tmp_99, i8* %final_hash_addr_2, align 1
+
+ST_11: StgValue_119 (176)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:137
+:0  ret void
+
+
+ <State 12>: 5.19ns
+ST_12: ctx_state_0_load (116)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:128
+:1  %ctx_state_0_load = load i32* @ctx_state_0, align 16
+
+ST_12: tmp_81 (121)  [1/1] 2.80ns  loc: ../hls_error/sha256.c:128
+:6  %tmp_81 = lshr i32 %ctx_state_0_load, %tmp_103_cast
+
+ST_12: tmp_97 (122)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:128
+:7  %tmp_97 = trunc i32 %tmp_81 to i8
+
+ST_12: final_hash_addr (123)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:128
+:8  %final_hash_addr = getelementptr [32 x i8]* %final_hash, i32 0, i32 %i_2_cast2
+
+ST_12: StgValue_124 (124)  [1/1] 2.39ns  loc: ../hls_error/sha256.c:128
+:9  store i8 %tmp_97, i8* %final_hash_addr, align 1
+
+ST_12: ctx_state_3_load (139)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:131
+:24  %ctx_state_3_load = load i32* @ctx_state_3, align 4
+
+ST_12: tmp_86 (140)  [1/1] 2.80ns  loc: ../hls_error/sha256.c:131
+:25  %tmp_86 = lshr i32 %ctx_state_3_load, %tmp_103_cast
+
+ST_12: tmp_100 (141)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:131
+:26  %tmp_100 = trunc i32 %tmp_86 to i8
+
+ST_12: sum6_cast8 (142)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:127
+:27  %sum6_cast8 = sext i3 %sum2 to i4
+
+ST_12: sum6_cast (143)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:127
+:28  %sum6_cast = zext i4 %sum6_cast8 to i32
+
+ST_12: final_hash_addr_3 (144)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:131
+:29  %final_hash_addr_3 = getelementptr [32 x i8]* %final_hash, i32 0, i32 %sum6_cast
+
+ST_12: StgValue_131 (145)  [1/1] 2.39ns  loc: ../hls_error/sha256.c:131
+:30  store i8 %tmp_100, i8* %final_hash_addr_3, align 1
+
+
+ <State 13>: 5.19ns
+ST_13: ctx_state_4_load (146)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:132
+:31  %ctx_state_4_load = load i32* @ctx_state_4, align 16
+
+ST_13: tmp_88 (147)  [1/1] 2.80ns  loc: ../hls_error/sha256.c:132
+:32  %tmp_88 = lshr i32 %ctx_state_4_load, %tmp_103_cast
+
+ST_13: tmp_101 (148)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:132
+:33  %tmp_101 = trunc i32 %tmp_88 to i8
+
+ST_13: sum4 (149)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:127
+:34  %sum4 = call i5 @_ssdm_op_BitConcatenate.i5.i2.i3(i2 -2, i3 %i_2)
+
+ST_13: sum8_cast (150)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:127
+:35  %sum8_cast = zext i5 %sum4 to i32
+
+ST_13: final_hash_addr_4 (151)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:132
+:36  %final_hash_addr_4 = getelementptr [32 x i8]* %final_hash, i32 0, i32 %sum8_cast
+
+ST_13: StgValue_138 (152)  [1/1] 2.39ns  loc: ../hls_error/sha256.c:132
+:37  store i8 %tmp_101, i8* %final_hash_addr_4, align 1
+
+ST_13: ctx_state_5_load (153)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:133
+:38  %ctx_state_5_load = load i32* @ctx_state_5, align 4
+
+ST_13: tmp_90 (154)  [1/1] 2.80ns  loc: ../hls_error/sha256.c:133
+:39  %tmp_90 = lshr i32 %ctx_state_5_load, %tmp_103_cast
+
+ST_13: tmp_102 (155)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:133
+:40  %tmp_102 = trunc i32 %tmp_90 to i8
+
+ST_13: sum (156)  [1/1] 1.72ns  loc: ../hls_error/sha256.c:127
+:41  %sum = add i5 -12, %i_2_cast1
+
+ST_13: sum_cast (157)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:127
+:42  %sum_cast = zext i5 %sum to i32
+
+ST_13: final_hash_addr_5 (158)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:133
+:43  %final_hash_addr_5 = getelementptr [32 x i8]* %final_hash, i32 0, i32 %sum_cast
+
+ST_13: StgValue_145 (159)  [1/1] 2.39ns  loc: ../hls_error/sha256.c:133
+:44  store i8 %tmp_102, i8* %final_hash_addr_5, align 1
+
+ST_13: ctx_state_6_load (160)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:134
+:45  %ctx_state_6_load = load i32* @ctx_state_6, align 8
+
+ST_13: tmp_92 (161)  [1/1] 2.80ns  loc: ../hls_error/sha256.c:134
+:46  %tmp_92 = lshr i32 %ctx_state_6_load, %tmp_103_cast
+
+ST_13: tmp_103 (162)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:134
+:47  %tmp_103 = trunc i32 %tmp_92 to i8
+
+ST_13: ctx_state_7_load (167)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:135
+:52  %ctx_state_7_load = load i32* @ctx_state_7, align 4
+
+ST_13: tmp_94 (168)  [1/1] 2.80ns  loc: ../hls_error/sha256.c:135
+:53  %tmp_94 = lshr i32 %ctx_state_7_load, %tmp_103_cast
+
+ST_13: tmp_104 (169)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:135
+:54  %tmp_104 = trunc i32 %tmp_94 to i8
+
+
+ <State 14>: 2.39ns
+ST_14: StgValue_152 (115)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:127
+:0  call void (...)* @_ssdm_op_SpecLoopName([24 x i8]* @p_str2) nounwind
+
+ST_14: sum1_cast7 (163)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:127
+:48  %sum1_cast7 = sext i4 %sum1 to i5
+
+ST_14: sum1_cast (164)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:127
+:49  %sum1_cast = zext i5 %sum1_cast7 to i32
+
+ST_14: final_hash_addr_6 (165)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:134
+:50  %final_hash_addr_6 = getelementptr [32 x i8]* %final_hash, i32 0, i32 %sum1_cast
+
+ST_14: StgValue_156 (166)  [1/1] 2.39ns  loc: ../hls_error/sha256.c:134
+:51  store i8 %tmp_103, i8* %final_hash_addr_6, align 1
+
+ST_14: sum3_cast6 (170)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:127
+:55  %sum3_cast6 = sext i3 %sum2 to i5
+
+ST_14: sum3_cast (171)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:127
+:56  %sum3_cast = zext i5 %sum3_cast6 to i32
+
+ST_14: final_hash_addr_7 (172)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:135
+:57  %final_hash_addr_7 = getelementptr [32 x i8]* %final_hash, i32 0, i32 %sum3_cast
+
+ST_14: StgValue_160 (173)  [1/1] 2.39ns  loc: ../hls_error/sha256.c:135
+:58  store i8 %tmp_104, i8* %final_hash_addr_7, align 1
+
+ST_14: StgValue_161 (174)  [1/1] 0.00ns  loc: ../hls_error/sha256.c:127
+:59  br label %7
+
+
+
+============================================================
++ Verbose Summary: Timing violations
+============================================================
+Target clock period: 10ns, clock uncertainty: 1.25ns.
+
+ <State 1>: 2.52ns
+The critical path consists of the following:
+	'load' operation ('i', ../hls_error/sha256.c:91) on static variable 'ctx_datalen' [15]  (0 ns)
+	'icmp' operation ('tmp', ../hls_error/sha256.c:94) [16]  (2.52 ns)
+
+ <State 2>: 4.87ns
+The critical path consists of the following:
+	'phi' operation ('i') with incoming values : ('i', ../hls_error/sha256.c:91) ('i', ../hls_error/sha256.c:100) [23]  (0 ns)
+	'add' operation ('i', ../hls_error/sha256.c:100) [24]  (2.44 ns)
+	'icmp' operation ('icmp', ../hls_error/sha256.c:101) [26]  (2.43 ns)
+
+ <State 3>: 1.57ns
+The critical path consists of the following:
+	multiplexor before 'phi' operation ('j') with incoming values : ('j', ../hls_error/sha256.c:107) [36]  (1.57 ns)
+
+ <State 4>: 4.35ns
+The critical path consists of the following:
+	'load' operation ('ctx_bitlen_0_load', ../hls_error/sha256.c:113) on static variable 'ctx_bitlen_0' [63]  (0 ns)
+	'add' operation ('tmp_86_cast', ../hls_error/sha256.c:113) [86]  (1.96 ns)
+	'store' operation (../hls_error/sha256.c:115) of variable 'tmp_71', ../hls_error/sha256.c:115 on array 'ctx_in_data' [91]  (2.39 ns)
+
+ <State 5>: 4.83ns
+The critical path consists of the following:
+	'phi' operation ('i') with incoming values : ('i', ../hls_error/sha256.c:91) ('i', ../hls_error/sha256.c:95) [52]  (0 ns)
+	'add' operation ('i', ../hls_error/sha256.c:95) [53]  (2.44 ns)
+	'getelementptr' operation ('ctx_in_data_addr_1', ../hls_error/sha256.c:97) [57]  (0 ns)
+	'store' operation (../hls_error/sha256.c:97) of constant 0 on array 'ctx_in_data' [58]  (2.39 ns)
+
+ <State 6>: 2.39ns
+The critical path consists of the following:
+	'store' operation (../hls_error/sha256.c:116) of variable 'tmp_72', ../hls_error/sha256.c:116 on array 'ctx_in_data' [93]  (2.39 ns)
+
+ <State 7>: 2.39ns
+The critical path consists of the following:
+	'store' operation (../hls_error/sha256.c:118) of variable 'tmp_93', ../hls_error/sha256.c:118 on array 'ctx_in_data' [97]  (2.39 ns)
+
+ <State 8>: 2.39ns
+The critical path consists of the following:
+	'store' operation (../hls_error/sha256.c:120) of variable 'tmp_76', ../hls_error/sha256.c:120 on array 'ctx_in_data' [101]  (2.39 ns)
+
+ <State 9>: 1.57ns
+The critical path consists of the following:
+	'call' operation (../hls_error/sha256.c:122) to 'sha256_transform' [104]  (1.57 ns)
+
+ <State 10>: 1.57ns
+The critical path consists of the following:
+	multiplexor before 'phi' operation ('i') with incoming values : ('i', ../hls_error/sha256.c:127) [107]  (1.57 ns)
+
+ <State 11>: 6.91ns
+The critical path consists of the following:
+	'phi' operation ('i') with incoming values : ('i', ../hls_error/sha256.c:127) [107]  (0 ns)
+	'sub' operation ('tmp_80', ../hls_error/sha256.c:128) [119]  (1.72 ns)
+	'lshr' operation ('tmp_84', ../hls_error/sha256.c:130) [133]  (2.8 ns)
+	'store' operation (../hls_error/sha256.c:130) of variable 'tmp_99', ../hls_error/sha256.c:130 on array 'final_hash' [138]  (2.39 ns)
+
+ <State 12>: 5.19ns
+The critical path consists of the following:
+	'load' operation ('ctx_state_0_load', ../hls_error/sha256.c:128) on static variable 'ctx_state_0' [116]  (0 ns)
+	'lshr' operation ('tmp_81', ../hls_error/sha256.c:128) [121]  (2.8 ns)
+	'store' operation (../hls_error/sha256.c:128) of variable 'tmp_97', ../hls_error/sha256.c:128 on array 'final_hash' [124]  (2.39 ns)
+
+ <State 13>: 5.19ns
+The critical path consists of the following:
+	'load' operation ('ctx_state_4_load', ../hls_error/sha256.c:132) on static variable 'ctx_state_4' [146]  (0 ns)
+	'lshr' operation ('tmp_88', ../hls_error/sha256.c:132) [147]  (2.8 ns)
+	'store' operation (../hls_error/sha256.c:132) of variable 'tmp_101', ../hls_error/sha256.c:132 on array 'final_hash' [152]  (2.39 ns)
+
+ <State 14>: 2.39ns
+The critical path consists of the following:
+	'getelementptr' operation ('final_hash_addr_6', ../hls_error/sha256.c:134) [165]  (0 ns)
+	'store' operation (../hls_error/sha256.c:134) of variable 'tmp_103', ../hls_error/sha256.c:134 on array 'final_hash' [166]  (2.39 ns)
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+N/A
+* FSMD analyzer results:
+  - Output states:
+ - Input state : 
+  - Chain level:
+	State 1
+	State 2
+	State 3
+	State 4
+	State 5
+	State 6
+	State 7
+	State 8
+	State 9
+	State 10
+	State 11
+	State 12
+	State 13
+	State 14
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+N/A
