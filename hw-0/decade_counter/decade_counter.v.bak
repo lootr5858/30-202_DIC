@@ -1,0 +1,95 @@
+/* !!! --- decade counter specification --- !!!
+	
+	counter:
+		- +1 per posedge
+		- max: 4'b1001
+			- ten -> HIGH @ max
+			- reset @ max
+	
+	reset:
+		- reset HIGH
+*/
+
+module decadeCounter_top
+(
+	wire input			clk,
+	wire input			select,
+	wire input			reset,
+	wire input			enable,
+	
+	wire output			ten,
+	wire output [3:0] count
+);
+
+// top module i/o
+wire [3:0] count_old;
+wire [3:0] count_new;
+
+// top module logic
+assign count = count_new;
+
+// connect compute modules
+
+
+endmodule
+
+
+module decadeCounter_dp
+(
+	wire input			select,
+	wire input			reset,
+	wire input			enable,
+	wire input [3:0]	count_old,
+	
+	wire output			ten,
+	wire output [3:0] count_new
+);
+
+// dp module i/o
+reg [3:0]	count_max = 4'b1001
+
+// dp module logic
+assign ten = (count_old == count_max) ? 1'b1 : 1'b0;
+
+always @ *
+begin
+	
+	casex ({select, reset, enable, ten})
+	
+	// not selected
+	{1'b0, 1'bx, 1'bx, 1'bx}: count_new = 4'bx;
+	
+	// not counting
+	{1'b1, 1'b0, 1'b0, 1'bx}: count_new = count_old;
+	
+	// reset
+	{1'b1, 1'b1, 1'bx, 1'bx}: count_new = 4'b0;
+	
+	// counting
+	// count < max
+	{1'b1, 1'b0, 1'b1, 1'b0}: count_new = count_old + 4'b1;
+	
+	// count == max
+	{1'b1, 1'b0, 1'b1, 1'b1}: count_new = 1'b0;
+	
+end
+
+endmodule
+
+
+module PipeReg #(parameter	BITWIDTH = 1) (
+	input	wire							clk,
+	input	wire							reset,
+	input	wire							enable,
+	input	wire	[BITWIDTH-1 : 0]	D,
+	
+	output reg	[BITWIDTH-1 : 0]	Q
+);
+
+	always @ (posedge CLK)
+	begin 
+		if 	  (RST)	Q <= {BITWIDTH{1'b0}}; 
+		else if (EN)	Q <= D;
+	end
+
+endmodule

@@ -1,0 +1,110 @@
+m255
+K4
+z2
+!s11f vlog 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 d/mnt/Data/Programming/30-202_DIC/hw-0/decade_counter/simulation/modelsim
+vdecade_counter
+Z1 !s110 1594656384
+!i10b 1
+!s100 MNKV0bzKeIZTBnaB?YYnP2
+Z2 !s11b Dg1SIo80bB@j0V0VzS_@n1
+I<;9:>JAgR9;Rm5Vb>TeHH0
+Z3 VDg1SIo80bB@j0V0VzS_@n1
+R0
+Z4 w1594655753
+Z5 8/mnt/Data/Programming/30-202_DIC/hw-0/decade_counter/decade_counter.v
+Z6 F/mnt/Data/Programming/30-202_DIC/hw-0/decade_counter/decade_counter.v
+!i122 0
+L0 17 40
+Z7 OV;L;2020.1;71
+r1
+!s85 0
+31
+Z8 !s108 1594656384.000000
+Z9 !s107 /mnt/Data/Programming/30-202_DIC/hw-0/decade_counter/decade_counter.v|
+Z10 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+/mnt/Data/Programming/30-202_DIC/hw-0/decade_counter|/mnt/Data/Programming/30-202_DIC/hw-0/decade_counter/decade_counter.v|
+!i113 1
+Z11 o-vlog01compat -work work
+Z12 !s92 -vlog01compat -work work +incdir+/mnt/Data/Programming/30-202_DIC/hw-0/decade_counter
+Z13 tCvgOpt 0
+vdecadeCounter_dp
+R1
+!i10b 1
+!s100 6?K:0ili<cZ^nf6hm2H7W0
+R2
+IE6jfg74C]8@PWNV^435Co0
+R3
+R0
+R4
+R5
+R6
+!i122 0
+L0 62 52
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+R11
+R12
+R13
+ndecade@counter_dp
+vdecadeCounter_tb
+R1
+!i10b 1
+!s100 C9YT`zlK:6Yj:bmT4mJ0T0
+R2
+IEij3i>ROjJD7?Sk8zYbJV0
+R3
+R0
+w1594654421
+8/mnt/Data/Programming/30-202_DIC/hw-0/decade_counter/decadeCounter_tb.v
+F/mnt/Data/Programming/30-202_DIC/hw-0/decade_counter/decadeCounter_tb.v
+!i122 1
+L0 3 95
+R7
+r1
+!s85 0
+31
+R8
+!s107 /mnt/Data/Programming/30-202_DIC/hw-0/decade_counter/decadeCounter_tb.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+/mnt/Data/Programming/30-202_DIC/hw-0/decade_counter|/mnt/Data/Programming/30-202_DIC/hw-0/decade_counter/decadeCounter_tb.v|
+!i113 1
+R11
+R12
+R13
+ndecade@counter_tb
+vPipeReg
+R1
+!i10b 1
+!s100 :NneVh9VK[Y>JW;Q?9aV?0
+R2
+I_5Aon<JfCP:1TC1F<5IHe2
+R3
+R0
+R4
+R5
+R6
+!i122 0
+L0 119 16
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+R11
+R12
+R13
+n@pipe@reg

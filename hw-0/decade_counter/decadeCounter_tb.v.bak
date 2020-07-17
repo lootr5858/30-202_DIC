@@ -1,0 +1,61 @@
+`timescale 1ns / 1ps
+
+module decadeCounter_tb();
+
+// define clock period
+localparam posDur = 5;
+localparam period = posDur * 2;
+
+// testbench i/o
+reg			clk;
+reg			select;
+reg			reset;
+reg			enable;
+
+wire			ten;
+wire [3:0]	count;
+
+/* ------ !! ------
+	testing modules
+	------ !! ------ */
+decadeCounter_top decadeCounter
+(
+	.clk		(clk),
+	.select	(select),
+	.reset	(reset),
+	.enable	(enable),
+	
+	.ten		(ten),
+	.count	(count)
+
+/* ------ !! ------
+	Clock generation
+	------ !! ------ */
+initial clk <= 1'b1;
+always #(posDur) clk <= ~clk;
+
+/* ------ !! ------
+	 Reset COntrol
+	------ !! ------ */
+initial
+begin
+	
+	select <= 1'b1;
+	reset  <= 1'b1;
+	
+	#(cycle)
+	
+	rst <= 1'b0;
+
+end
+
+/* ------ !! ------
+	 SIMULATION !!!
+	------ !! ------ */
+initial
+begin
+
+	#(cycle * 2)
+	
+	
+	

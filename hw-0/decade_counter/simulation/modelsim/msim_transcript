@@ -1,0 +1,59 @@
+# do decade_counter_run_msim_rtl_verilog.do
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Model Technology ModelSim - Intel FPGA Edition vmap 2020.1 Lib Mapping Utility 2020.02 Feb 28 2020
+# vmap work rtl_work 
+# Modifying /home/apexpop/intelFPGA_lite/20.1/modelsim_ase/linuxaloem/../modelsim.ini
+# 
+# vlog -vlog01compat -work work +incdir+/mnt/Data/Programming/30-202_DIC/hw-0/decade_counter {/mnt/Data/Programming/30-202_DIC/hw-0/decade_counter/decade_counter.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 00:06:24 on Jul 14,2020
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+/mnt/Data/Programming/30-202_DIC/hw-0/decade_counter" /mnt/Data/Programming/30-202_DIC/hw-0/decade_counter/decade_counter.v 
+# -- Compiling module decade_counter
+# -- Compiling module decadeCounter_dp
+# -- Compiling module PipeReg
+# 
+# Top level modules:
+# 	decade_counter
+# End time: 00:06:24 on Jul 14,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# vlog -vlog01compat -work work +incdir+/mnt/Data/Programming/30-202_DIC/hw-0/decade_counter {/mnt/Data/Programming/30-202_DIC/hw-0/decade_counter/decadeCounter_tb.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 00:06:24 on Jul 14,2020
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+/mnt/Data/Programming/30-202_DIC/hw-0/decade_counter" /mnt/Data/Programming/30-202_DIC/hw-0/decade_counter/decadeCounter_tb.v 
+# -- Compiling module decadeCounter_tb
+# 
+# Top level modules:
+# 	decadeCounter_tb
+# End time: 00:06:24 on Jul 14,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver -L rtl_work -L work -voptargs="+acc"  decadeCounter_tb
+# vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver -L rtl_work -L work -voptargs=""+acc"" decadeCounter_tb 
+# Start time: 00:06:24 on Jul 14,2020
+# Loading work.decadeCounter_tb
+# Loading work.decade_counter
+# Loading work.decadeCounter_dp
+# Loading work.PipeReg
+# ** Warning: (vsim-2685) [TFMPC] - Too few port connections for 'decade_counter'.  Expected 6, found 5.
+#    Time: 0 ps  Iteration: 0  Instance: /decadeCounter_tb/decade_counter File: /mnt/Data/Programming/30-202_DIC/hw-0/decade_counter/decadeCounter_tb.v Line: 18
+# ** Warning: (vsim-3722) /mnt/Data/Programming/30-202_DIC/hw-0/decade_counter/decadeCounter_tb.v(18): [TFMPC] - Missing connection for port 'select'.
+# ** Warning: (vsim-3015) [PCDPC] - Port size (1) does not match connection size (32) for port 'enable'. The port definition is at: /mnt/Data/Programming/30-202_DIC/hw-0/decade_counter/decade_counter.v(122).
+#    Time: 0 ps  Iteration: 0  Instance: /decadeCounter_tb/decade_counter/cnt File: /mnt/Data/Programming/30-202_DIC/hw-0/decade_counter/decade_counter.v Line: 46
+# 
+# add wave *
+# view structure
+# .main_pane.structure.interior.cs.body.struct
+# view signals
+# .main_pane.objects.interior.cs.body.tree
+# run -all
+# ** Note: $finish    : /mnt/Data/Programming/30-202_DIC/hw-0/decade_counter/decadeCounter_tb.v(93)
+#    Time: 670 ns  Iteration: 0  Instance: /decadeCounter_tb
+# 1
+# Break in Module decadeCounter_tb at /mnt/Data/Programming/30-202_DIC/hw-0/decade_counter/decadeCounter_tb.v line 93
+# End time: 00:11:48 on Jul 14,2020, Elapsed time: 0:05:24
+# Errors: 0, Warnings: 3
